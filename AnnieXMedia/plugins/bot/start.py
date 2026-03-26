@@ -96,6 +96,8 @@ async def start_pm(client, message: Message, _):
                 key = InlineKeyboardMarkup(
                     [[InlineKeyboardButton(text=_["S_B_6"], url=link),
                       InlineKeyboardButton(text=_["S_B_4"], url=config.SUPPORT_CHAT)]]
+                    [[InlineKeyboardButton(text=_["S_B_6"], url=link),
+                      InlineKeyboardButton(text=_["S_B_4"], url=config.SUPPORT_CHANNEL)]]
                 )
 
                 await m.delete()
