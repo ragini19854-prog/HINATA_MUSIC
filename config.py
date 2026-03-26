@@ -51,7 +51,7 @@ GIT_TOKEN = getenv("GIT_TOKEN")  # needed if repo is private
 
 # ── Support links ──────────────────────────────────────────────────────────────
 SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/MADARA_DEFAULTER_ABOUT")
-SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/FRIEND_ZONE_BY_MADARA")
+SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/+3P-XysyM8v9iYjFl")
 
 # ── Assistant auto-leave ───────────────────────────────────────────────────────
 AUTO_LEAVING_ASSISTANT = False
