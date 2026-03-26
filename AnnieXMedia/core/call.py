@@ -608,4 +608,4 @@ class Call(PyTgCalls):
                         await self.stop_stream(update.chat_id)
 
 
-Kanha = Call()
+StreamController = Call()
