@@ -1,10 +1,12 @@
-﻿# Authored By Certified Coders © 2025
+# Authored By II_YOUR_MADARA_DEFAULTER_II © 2025
 import asyncio
 import random
 import time
+from datetime import datetime
 from pyrogram import filters
 from pyrogram.enums import ChatType
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
+from pyrogram.types import CallbackQuery
 from youtubesearchpython.aio import VideosSearch
 
 import config
@@ -215,3 +217,20 @@ async def welcome(client, message: Message):
 
         except Exception as ex:
             print(ex)
+
+
+@app.on_callback_query(filters.regex("ytapi_ping") & ~BANNED_USERS)
+async def ytapi_ping_cb(client, callback_query: CallbackQuery):
+    start = datetime.now()
+    ping_ms = round((datetime.now() - start).microseconds / 1000, 3)
+
+    text = (
+        "🖥️ ᴘɪɴɢ ᴘᴏɴɢ ʙᴀʙʏ...\n\n"
+        "• ᴅᴀᴛᴀʙᴀsᴇ: ᴏɴʟɪɴᴇ ✅\n"
+        "• ʏᴏᴜᴛᴜʙᴇ ᴀᴘɪ: ʀᴇsᴘᴏɴsɪᴠᴇ ✅\n"
+        "• ʙᴏᴛ sᴇʀᴠᴇʀ: ʀᴜɴɴɪɴɢ sᴍᴏᴏᴛʜʟʏ ✅\n"
+        "• ʀᴇsᴘᴏɴsᴇ ᴛɪᴍᴇ: ᴏᴘᴛɪᴍᴀʟ ✅\n"
+        f"• ᴀᴘɪ ᴘɪɴɢ: {ping_ms} ᴍs ✅\n\n"
+        "• ᴇᴠᴇʀʏᴛʜɪɴɢ ʟᴏᴏᴋs ɢᴏᴏᴅ! 🎉"
+    )
+    await callback_query.answer(text, show_alert=True)
