@@ -61,6 +61,47 @@ async def _exec_proc(*args: str) -> Tuple[bytes, bytes]:
         return b"", b"timeout"
 
 
+def _sec_to_duration(sec) -> str:
+    try:
+        sec = int(sec or 0)
+        h, r = divmod(sec, 3600)
+        m, s = divmod(r, 60)
+        return f"{h}:{m:02d}:{s:02d}" if h else f"{m}:{s:02d}"
+    except Exception:
+        return "0:00"
+
+
+def _ytdlp_search(query: str, cookie_path: Optional[str]) -> List[Dict]:
+    ydl_opts: Dict = {
+        "quiet": True,
+        "skip_download": True,
+        "extract_flat": True,
+        "no_warnings": True,
+    }
+    if cookie_path:
+        ydl_opts["cookiefile"] = cookie_path
+    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+        info = ydl.extract_info(f"ytsearch1:{query}", download=False) or {}
+        entries = info.get("entries") or []
+        out = []
+        for e in entries:
+            vid_id = e.get("id") or ""
+            out.append({
+                "id": vid_id,
+                "title": e.get("title") or "",
+                "duration": _sec_to_duration(e.get("duration")),
+                "link": f"https://www.youtube.com/watch?v={vid_id}",
+                "thumbnails": [{"url": e.get("thumbnail") or f"https://i.ytimg.com/vi/{vid_id}/hqdefault.jpg"}],
+                "channel": {
+                    "name": e.get("uploader") or e.get("channel") or "Unknown",
+                    "link": e.get("uploader_url") or "",
+                },
+                "viewCount": {"short": str(e.get("view_count") or "")},
+                "publishedTime": e.get("upload_date") or "Unknown",
+            })
+        return out
+
+
 @capture_internal_err
 async def cached_youtube_search(query: str) -> List[Dict]:
     key = f"q:{query}"
@@ -75,11 +116,23 @@ async def cached_youtube_search(query: str) -> List[Dict]:
         if len(_cache) > YOUTUBE_META_MAX:
             _cache.clear()
 
+    result: List[Dict] = []
+
+    # Primary: youtubesearchpython
     try:
         data = await VideosSearch(query, limit=1).next()
-        result = data.get("result", [])
+        result = data.get("result") or []
     except Exception:
         result = []
+
+    # Fallback: yt-dlp ytsearch (reliable even when youtubesearchpython fails)
+    if not result:
+        try:
+            cookie_path = _cookiefile_path()
+            loop = asyncio.get_event_loop()
+            result = await loop.run_in_executor(None, _ytdlp_search, query, cookie_path)
+        except Exception:
+            result = []
 
     if result:
         async with _cache_lock:
