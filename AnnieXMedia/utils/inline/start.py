@@ -1,4 +1,4 @@
-﻿# Authored By Certified Coders © 2025
+# Authored By II_YOUR_MADARA_DEFAULTER_II © 2025
 from pyrogram.types import InlineKeyboardButton
 
 import config
@@ -21,16 +21,35 @@ def private_panel(_):
     buttons = [
         [
             InlineKeyboardButton(
-                text=_["S_B_1"],
+                text="✚ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ᴄʜᴀᴛ ✚",
                 url=f"https://t.me/{app.username}?startgroup=true",
             )
         ],
         [
-            InlineKeyboardButton(text=_["S_B_7"], user_id=config.OWNER_ID),
-            InlineKeyboardButton(text=_["S_B_4"], url=config.SUPPORT_CHAT),
+            InlineKeyboardButton(
+                text="👑 ᴅᴇᴠᴇʟᴏᴘᴇʀ",
+                user_id=config.OWNER_ID,
+            ),
+            InlineKeyboardButton(
+                text="🖥️ ʏᴛ-ᴀᴘɪ",
+                url="https://api.nexgenbots.xyz",
+            ),
         ],
         [
-            InlineKeyboardButton(text=_["S_B_3"], callback_data="open_help"),
+            InlineKeyboardButton(
+                text="🔄 ᴜᴘᴅᴀᴛᴇ ↗",
+                url=config.UPSTREAM_REPO,
+            ),
+            InlineKeyboardButton(
+                text="💬 sᴜᴘᴘᴏʀᴛ ↗",
+                url=config.SUPPORT_CHAT,
+            ),
+        ],
+        [
+            InlineKeyboardButton(
+                text="❓ ʜᴇʟᴘ ᴀɴᴅ ᴄᴏᴍᴍᴀɴᴅs",
+                callback_data="open_help",
+            ),
         ],
     ]
     return buttons
