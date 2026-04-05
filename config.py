@@ -8,21 +8,21 @@ from pyrogram import filters
 load_dotenv()
 
 # ── Core bot config ────────────────────────────────────────────────────────────
-API_ID = int(getenv("API_ID", 35411328))
+API_ID = int(getenv("API_ID", 35411328 ))
 API_HASH = getenv("API_HASH", "4c8d3c8f5d3483296f5fb530ea2cfcc6")
 # 🛠️ FIXED: Removed variable name from inside token
-BOT_TOKEN = getenv("BOT_TOKEN", "8738927940:AAEJ7ekDiaRp0-hsLvrYNJtUGflUT6hmIMw")
+BOT_TOKEN = getenv("BOT_TOKEN", "8776563274:AAHnLHiwJ9ZmrztOfKn6ldEpB6Y97EOFQ4Y")
 
-OWNER_ID = int(getenv("OWNER_ID", 8396616795))
-OWNER_USERNAME = getenv("OWNER_USERNAME", "II_YOUR_MADARA_II")
-BOT_USERNAME = getenv("BOT_USERNAME", "HINATA_MUSIC_PLYER_bot")
-BOT_NAME = getenv("BOT_NAME", "🎶 ʜɪɴᴀᴛᴀ ᴍᴜsɪᴄ ʙᴏᴛ 🎧")
-ASSUSERNAME = getenv("ASSUSERNAME", "HINATA_X_ASSITANT")
+OWNER_ID = int(getenv("OWNER_ID", 8441236350))
+OWNER_USERNAME = getenv("OWNER_USERNAME", "II_YOUR_MADARA_DEFAULTER_II")
+BOT_USERNAME = getenv("BOT_USERNAME", "RADHA_MUSIC_GMS_bot")
+BOT_NAME = getenv("BOT_NAME", "ʀᴀᴅʜᴀ ᴍᴜsɪᴄ 🎧✨")
+ASSUSERNAME = getenv("ASSUSERNAME", "RADHA_X_ASSITANT")
 
 # ── Database & logging ─────────────────────────────────────────────────────────
 # 🛠️ FIXED: Proper getenv syntax for MongoDB
 MONGO_DB_URI = getenv("MONGO_DB_URI", "mongodb+srv://bsdk:betichod@cluster0.fgj1r9z.mongodb.net/?retryWrites=true&w=majority")
-LOGGER_ID = int(getenv("LOGGER_ID", -1003896050453))
+LOGGER_ID = int(getenv("LOGGER_ID", -1003774441740))
 
 # ── Limits (durations in min/sec; sizes in bytes) ──────────────────────────────
 DURATION_LIMIT_MIN = int(getenv("DURATION_LIMIT", 300))
@@ -35,9 +35,9 @@ PLAYLIST_FETCH_LIMIT = int(getenv("PLAYLIST_FETCH_LIMIT", "30"))
 # ── External APIs ──────────────────────────────────────────────────────────────
 # 🛠️ FIXED: Proper getenv syntax
 COOKIE_URL = getenv("COOKIE_URL", "https://files.catbox.moe/xh6f12.txt")  # required (paste link)
-API_URL = getenv("API_URL")        # optional
-VIDEO_API_URL = getenv("VIDEO_API_URL")  # optional
-API_KEY = getenv("API_KEY")        # optional
+API_URL = getenv("https://api.nexgenbots.xyz")        # optional
+VIDEO_API_URL = getenv("https://api.video.nexgenbots.xyz")  # optional
+API_KEY = getenv("NxGBNexGenBots67b7b6")        # optional
 DEEP_API = getenv("DEEP_API")      # optional
 
 # ── Hosting / deployment ───────────────────────────────────────────────────────
@@ -50,8 +50,8 @@ UPSTREAM_BRANCH = getenv("UPSTREAM_BRANCH", "Master")
 GIT_TOKEN = getenv("GIT_TOKEN")  # needed if repo is private
 
 # ── Support links ──────────────────────────────────────────────────────────────
-SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/MADARA_DEFAULTER_ABOUT")
-SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/+3P-XysyM8v9iYjFl")
+SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/+Imyf3M9TO5k1ODRl")
+SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/+dv_rcq5uIXhmMWM1")
 
 # ── Assistant auto-leave ───────────────────────────────────────────────────────
 AUTO_LEAVING_ASSISTANT = False
@@ -111,6 +111,7 @@ AYUV = [
     "➥ sᴜᴘᴇʀ ғᴀsᴛ ᴘʟᴀʏʙᴀᴄᴋ\n"
     "➥ sᴍᴏᴏᴛʜ ᴀᴜᴅɪᴏ sʏsᴛᴇᴍ\n"
     "➥ 24x7 ᴍᴜsɪᴄ sᴜᴘᴘᴏʀᴛ\n\n"
+     "─────────────────────•\n"
     "🎧 sᴜᴘᴘᴏʀᴛᴇᴅ ᴘʟᴀᴛғᴏʀᴍs:\n"
     "• ʏᴏᴜᴛᴜʙᴇ\n"
     "• sᴘᴏᴛɪғʏ\n"
