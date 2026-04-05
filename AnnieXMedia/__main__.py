@@ -58,10 +58,9 @@ async def init():
     try:
         await StreamController.stream_call("http://docs.evostream.com/sample_content/assets/sintel1m720p.mp4")
     except NoActiveGroupCall:
-        LOGGER("AnnieXMedia").error(
-            "ᴘʟᴇᴀsᴇ ᴛᴜʀɴ ᴏɴ ᴛʜᴇ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ ᴏғ ʏᴏᴜʀ ʟᴏɢ ɢʀᴏᴜᴘ/ᴄʜᴀɴɴᴇʟ.\n\nᴀɴɴɪᴇ ʙᴏᴛ sᴛᴏᴘᴘᴇᴅ..."
+        LOGGER("AnnieXMedia").warning(
+            "ᴠᴏɪᴄᴇ ᴄʜᴀᴛ ɴᴏᴛ ᴀᴄᴛɪᴠᴇ ɪɴ ʟᴏɢ ɢʀᴏᴜᴘ — ᴄᴏɴᴛɪɴᴜɪɴɢ ᴡɪᴛʜᴏᴜᴛ ᴠᴏɪᴄᴇ ᴄᴀʟʟ ᴛᴇsᴛ."
         )
-        exit()
     except:
         pass
 

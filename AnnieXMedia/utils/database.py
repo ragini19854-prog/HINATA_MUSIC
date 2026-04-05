@@ -8,6 +8,7 @@ from AnnieXMedia.core.mongo import mongodb
 authdb = mongodb.adminauth
 authuserdb = mongodb.authuser
 autoenddb = mongodb.autoend
+autoplaydb = mongodb.autoplay
 assdb = mongodb.assistants
 blacklist_chatdb = mongodb.blacklistChat
 blockeddb = mongodb.blockedusers
@@ -28,6 +29,7 @@ active = []
 activevideo = []
 assistantdict = {}
 autoend = {}
+autoplaystate = {}
 count = {}
 channelconnect = {}
 langm = {}
@@ -213,6 +215,30 @@ async def autoend_on():
 async def autoend_off():
     chat_id = 1234
     await autoenddb.delete_one({"chat_id": chat_id})
+
+
+async def is_autoplay_on(chat_id: int) -> bool:
+    state = autoplaystate.get(chat_id)
+    if state is not None:
+        return state
+    record = await autoplaydb.find_one({"chat_id": chat_id})
+    if record:
+        autoplaystate[chat_id] = True
+        return True
+    autoplaystate[chat_id] = False
+    return False
+
+
+async def autoplay_on(chat_id: int):
+    autoplaystate[chat_id] = True
+    await autoplaydb.update_one(
+        {"chat_id": chat_id}, {"$set": {"autoplay": True}}, upsert=True
+    )
+
+
+async def autoplay_off(chat_id: int):
+    autoplaystate[chat_id] = False
+    await autoplaydb.delete_one({"chat_id": chat_id})
 
 
 async def get_loop(chat_id: int) -> int:
