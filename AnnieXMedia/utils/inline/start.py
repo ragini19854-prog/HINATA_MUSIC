@@ -32,13 +32,13 @@ def private_panel(_):
             ),
             InlineKeyboardButton(
                 text="🖥️ ʏᴛ-ᴀᴘɪ",
-                url="https://api.nexgenbots.xyz",
+                callback_data="ytapi_ping",
             ),
         ],
         [
             InlineKeyboardButton(
-                text="🔄 ᴜᴘᴅᴀᴛᴇ ↗",
-                url=config.UPSTREAM_REPO,
+                text="📢 ᴜᴘᴅᴀᴛᴇ ↗",
+                url=config.SUPPORT_CHANNEL,
             ),
             InlineKeyboardButton(
                 text="💬 sᴜᴘᴘᴏʀᴛ ↗",
