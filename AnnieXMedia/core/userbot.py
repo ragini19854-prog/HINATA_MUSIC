@@ -1,4 +1,4 @@
-﻿# Authored By Certified Coders © 2025
+# Authored By II_YOUR_MADARA_DEFAULTER_II © 2025
 from pyrogram import Client
 
 import config
@@ -8,13 +8,7 @@ from ..logging import LOGGER
 assistants = []
 assistantids = []
 
-GROUPS_TO_JOIN = [
-    "CertifiedDiscussion",
-    "CertifiedCoders",
-    "CertifiedCodes",
-    "CertifiedDevs",
-    "CertifiedNetwork",
-]
+GROUPS_TO_JOIN = []
 
 
 # Initialize userbots
